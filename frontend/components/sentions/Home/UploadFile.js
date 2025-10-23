@@ -29,10 +29,10 @@ const UploadFile = () => {
         });
       }
 
-      // console.log("response: ", res);
+      console.log("response: ", res);
 
       const data = await res.json();
-      // console.log("data: ", data);
+      console.log("data: ", data);
       setResult(data.text);
 
       if (data.text) {
