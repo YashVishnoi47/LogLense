@@ -9,7 +9,7 @@ const UploadFile = () => {
   const router = useRouter();
   const [result, setResult] = useState();
   const [uploading, setUploading] = useState(false);
-  const url = "https://loglense-backend.onrender.com"
+  const url = "https://loglense-backend.onrender.com/api/logs/upload"
   // const url = "http://localhost:5000/api/logs/upload";
   const sendFile = async (e) => {
     try {
