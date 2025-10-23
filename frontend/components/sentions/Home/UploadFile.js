@@ -9,6 +9,8 @@ const UploadFile = () => {
   const router = useRouter();
   const [result, setResult] = useState();
   const [uploading, setUploading] = useState(false);
+  const url = "https://loglense-backend.onrender.com"
+  // const url = "http://localhost:5000/api/logs/upload"
   const sendFile = async (e) => {
     try {
       const formData = new FormData();
@@ -16,7 +18,7 @@ const UploadFile = () => {
 
       setUploading(true);
 
-      const res = await fetch("http://localhost:5000/api/logs/upload", {
+      const res = await fetch(url, {
         method: "POST",
         body: formData,
       });
