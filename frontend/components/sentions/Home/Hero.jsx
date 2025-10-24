@@ -9,10 +9,10 @@ const Hero = () => {
       <div className='w-full flex flex-col gap-6 justify-center items-center'>
         <div className='flex flex-col w-full gap-1 justify-center items-center'>
           <Batch />
-          <h1 className='text-6xl leading-tight tracking-tighter w-[50%] font-medium text-center'>Instantly Understand What Your Logs Are Saying</h1>
+          <h1 className='lg:text-6xl sm:text-4xl text-2xl leading-tight tracking-tighter md:w-[50%] w-[80%] font-medium text-center'>Instantly Understand What Your Logs Are Saying</h1>
         </div>
 
-        <p className='text-md w-[40%] text-center font-mono'>Gain instant insights, spot issues faster, and save hours of debugging with LogLense’s intelligent log interpretation.</p>
+        <p className='lg:text-md md:w-[40%] w-[70%] text-center font-mono'>Gain instant insights, spot issues faster, and save hours of debugging with LogLense’s intelligent log interpretation.</p>
 
         <Link href="#upload">
           <HeroButton />
@@ -29,7 +29,7 @@ const Hero = () => {
 const Batch = () => {
   return (
     <div className='px-4 py-2 bg-black/10 backdrop-blur-2xl  rounded-full'>
-      <p className='text-xs'>Beta Testing On</p>
+      <p className='lg:text-xs text-[8px]'>Beta Testing On</p>
     </div>
   )
 }
