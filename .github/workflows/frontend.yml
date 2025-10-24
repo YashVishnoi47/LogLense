@@ -17,5 +17,3 @@ on:
 jobs:
   call-reusable:
     uses: ./.github/workflows/reusable-build.yml
-    with:
-      node-version: 18
