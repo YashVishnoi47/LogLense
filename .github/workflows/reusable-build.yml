@@ -2,20 +2,14 @@ name: Global Workflow
 
 on:
   workflow_call:
-    # inputs:
-    #   node-version:
-    #     required: true
-    #     type: string
-    secrets: {}
+    inputs:
+      node-version:
+        required: true
+        type: string
 
 jobs:
   build:
-    strategy:
-      matrix:
-        node: [18, 19, 20]
-        os: [ubuntu-latest, windows-latest]
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: "Checkout repo"
@@ -24,7 +18,7 @@ jobs:
       - name: "Setup node"
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ inputs.node-version }}
 
       - name: Build project
         run: |
