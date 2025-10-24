@@ -1,0 +1,21 @@
+name: FrontEnd CI
+
+on:
+  push:
+    branches:
+      - main
+      - frontend
+    paths:
+      - "frontend/**"
+  pull_request:
+    branches:
+      - main
+      - frontend
+    paths:
+      - "frontend/**"
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      node-version: 18

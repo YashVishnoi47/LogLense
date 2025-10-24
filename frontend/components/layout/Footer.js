@@ -52,7 +52,7 @@ export default function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex flex-col md:items-end space-y-3">
+            {/* <div className="flex flex-col md:items-end space-y-3">
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
                 Connect
               </h3>
@@ -82,7 +82,7 @@ export default function Footer() {
                   <Mail className="w-5 h-5" />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
