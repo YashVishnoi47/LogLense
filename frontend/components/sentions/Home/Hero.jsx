@@ -28,8 +28,8 @@ const Hero = () => {
 
 const Batch = () => {
   return (
-    <div className='px-4 py-2 bg-black/10 backdrop-blur-2xl  rounded-full'>
-      <p className='lg:text-xs text-[8px]'>Beta Testing On</p>
+    <div className='px-4 py-2 bg-white backdrop-blur-2xl  rounded-full'>
+      <p className='lg:text-xs text-[8px]'>First Release</p>
     </div>
   )
 }
