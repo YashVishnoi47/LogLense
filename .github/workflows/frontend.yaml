@@ -1,4 +1,4 @@
-name: FrontEnd CI
+name: FrontEnd CI/CD
 
 on:
   push:
@@ -59,3 +59,12 @@ jobs:
         run: |
           cd frontend
           npm test
+
+  deploy-production:
+      needs: build
+      runs-on: ubuntu-latest
+      environment:
+        name: production
+        url: https://log-lense.vercel.app/
+      steps:
+        - run: echo "Deploying to production..."
