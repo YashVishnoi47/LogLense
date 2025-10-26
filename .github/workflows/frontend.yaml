@@ -42,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run frontend tests
-        run: |
-          cd frontend
-          npm test
+        # run: |
+        #   cd frontend
+        #   npm test
+        run: npm test
