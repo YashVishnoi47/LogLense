@@ -5,14 +5,14 @@ on:
     branches:
       - main
       - frontend
-    paths:
-      - "frontend/**"
+    # paths:
+    #   - "frontend/**"
   pull_request:
     branches:
       - main
       - frontend
-    paths:
-      - "frontend/**"
+    # paths:
+    #   - "frontend/**"
 
 
 jobs:
