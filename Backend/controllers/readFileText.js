@@ -14,14 +14,23 @@ const getTextFromFile = ({ filePath }) => {
     fs.readFile(filePath, "utf-8", (err, data) => {
       if (err) {
         console.log("Error reading the file - ", err);
-        reject(err); 
+        reject(err);
       } else {
         console.log("Text Extraction successful ✅");
         DeleteFile(filePath);
         console.log("Text Sent for preProcessing");
 
-        // console.log("ReadFiletext: ", data);
-        resolve(data);
+        const lines = data.split("\n");
+        combinedText = lines.join(" ");
+        if (!combinedText) {
+          console.log("Error reading the file");
+          return new Error({
+            success: false,
+            message: "Error reading the file",
+          });
+        }
+
+        resolve(combinedText);
       }
     });
   });

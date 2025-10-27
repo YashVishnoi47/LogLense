@@ -26,16 +26,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: "npm"
 
       - name: Install frontend dependencies
-        run: |
-          cd frontend
-          npm i
+        working-directory: frontend
+        run: npm ci
 
       - name: Build the frontend
-        run: |
-          cd frontend
-          npm run build
+        working-directory: frontend
+        run: npm ci
 
   test:
     needs: build
@@ -51,20 +50,27 @@ jobs:
           node-version: 18
 
       - name: Install frontend dependencies
-        run: |
-          cd frontend
-          npm install
+        working-directory: frontend
+        run: npm ci
 
       - name: Run frontend tests
-        run: |
-          cd frontend
-          npm test
+        working-directory: frontend
+        run: npm ci
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Run ESLint
+        working-directory: frontend
+        run: npx eslint . --max-warnings=0
 
   deploy-production:
-      needs: test
-      runs-on: ubuntu-latest
-      environment:
-        name: production
-        url: https://log-lense.vercel.app/
-      steps:
-        - run: echo "Deploying to production..."
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://log-lense.vercel.app/
+    steps:
+      - run: echo "Deploying to production..."

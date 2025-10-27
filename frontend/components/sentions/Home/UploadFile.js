@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Dropzone from "@/components/layout/DropeZone";
-import { getCookie, SetCookie } from "@/utils/Cookies";
+import { SetCookie } from "@/utils/Cookies";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -9,8 +9,8 @@ const UploadFile = () => {
   const router = useRouter();
   const [result, setResult] = useState();
   const [uploading, setUploading] = useState(false);
-  const url = "https://loglense-backend.onrender.com/api/logs/upload"
-  // const url = "http://localhost:5000/api/logs/upload";
+  // const url = "https://loglense-backend.onrender.com/api/logs/upload"
+  const url = "http://localhost:5000/api/logs/upload";
   const sendFile = async (e) => {
     try {
       const formData = new FormData();
@@ -36,11 +36,13 @@ const UploadFile = () => {
       setResult(data.text);
 
       if (data.text) {
+        setUploading(false);
         router.push("/dashboard");
       } else {
-        toast.error(result.message || "Something went wrong", {
+        toast.error(result.message || "Something went wrong, Try again", {
           duration: 3000,
         });
+        setUploading(false);
       }
 
       SetCookie("Data Analyises", JSON.stringify(data.text));
@@ -48,6 +50,7 @@ const UploadFile = () => {
       setUploading(false);
     } catch (error) {
       console.log(error);
+      setUploading(false);
     }
   };
 

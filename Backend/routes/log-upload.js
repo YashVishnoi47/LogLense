@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  // console.log(file.mimetype);
   const allowedFileType = ["text/plain", "application/octet-stream"];
 
   const allowedMineType = allowedFileType.includes(file.mimetype);
@@ -21,7 +20,10 @@ const fileFilter = (req, file, cb) => {
   if (allowedMineType) {
     cb(null, true);
   } else {
-    cb(new Error("This file type is not support"), false);
+    return {
+      success: false,
+      message: "This file type is not support...",
+    };
   }
 };
 
@@ -39,8 +41,6 @@ router.post("/logs/upload", upload.single("file"), async (req, res) => {
 
   try {
     const finalresult = await SendReq({ file: uploadedFile });
-
-    // console.log("Log-Upload: ", finalresult);
 
     return res.status(201).json({
       success: true,

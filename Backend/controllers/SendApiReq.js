@@ -1,4 +1,3 @@
-const { preProcessText } = require("../utils/preProcessText");
 const { getTextFromFile } = require("./readFileText");
 
 require("dotenv").config();
@@ -14,8 +13,6 @@ const SendReq = async ({ file, text }) => {
         message: "Error reading the file",
       };
     }
-
-    const inputText = await preProcessText({ text: processedText });
 
     const OR_API = process.env.OR_TOKEN;
 
@@ -59,7 +56,7 @@ const SendReq = async ({ file, text }) => {
           },
           {
             role: "user",
-            content: `Analyze the following logs and extract all meaningful insights:\n\n${inputText}`,
+            content: `Analyze the following logs and extract all meaningful insights:\n\n${processedText}`,
           },
         ],
       }),
@@ -67,9 +64,8 @@ const SendReq = async ({ file, text }) => {
 
     if (!res.ok) {
       const errorData = await res.json();
-      // throw new Error(`AI API Error: ${JSON.stringify(errorData)}`);
       return {
-        message: "INternal API Error",
+        message: "Internal API Error",
         error: JSON.stringify(errorData),
       };
     }
