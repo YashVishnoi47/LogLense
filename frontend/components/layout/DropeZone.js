@@ -7,7 +7,10 @@ import { useDropzone } from "react-dropzone";
 function Dropzone({ sendFile, uploading }) {
   const onDrop = useCallback((acceptedFiles) => {
     sendFile(acceptedFiles[0]);
-  }, []);
+  }, [])
+  ;
+
+  // 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
